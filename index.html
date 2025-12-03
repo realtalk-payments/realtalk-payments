@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Realtalk Payments — Global Acquiring Solutions</title>
+    <meta name="description" content="Payment processing, mass payouts and acquiring for High-Risk and Low-Risk businesses. Global coverage.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+        .hero-pattern {
+            background-color: #0f172a;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%231e293b' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+        .gradient-text {
+            background: linear-gradient(90deg, #34d399, #3b82f6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        /* Language Switching Logic */
+        body.lang-en .lang-pl { display: none !important; }
+        body.lang-pl .lang-en { display: none !important; }
+        
+        /* Smooth fade effect for lang switch */
+        .lang-en, .lang-pl {
+            animation: fadeIn 0.3s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900 antialiased lang-en">
+
+    <!-- Header -->
+    <header class="fixed w-full bg-white/95 backdrop-blur-sm shadow-sm z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center gap-2 cursor-pointer" onclick="window.scrollTo(0,0)">
+                    <div class="w-10 h-10 bg-slate-900 rounded-lg flex items-center justify-center text-emerald-400">
+                        <i class="fa-solid fa-bolt text-xl"></i>
+                    </div>
+                    <span class="font-bold text-2xl tracking-tight text-slate-900">Realtalk<span class="text-emerald-500">.dev</span></span>
+                </div>
+                
+                <!-- Desktop Nav -->
+                <nav class="hidden md:flex space-x-8 items-center">
+                    <a href="#features" class="text-slate-600 hover:text-emerald-600 font-medium transition">
+                        <span class="lang-en">Features</span><span class="lang-pl">Funkcje</span>
+                    </a>
+                    <a href="#geo" class="text-slate-600 hover:text-emerald-600 font-medium transition">
+                        <span class="lang-en">Coverage</span><span class="lang-pl">Zasięg</span>
+                    </a>
+                    <a href="#integration" class="text-slate-600 hover:text-emerald-600 font-medium transition">API</a>
+                    <a href="#faq" class="text-slate-600 hover:text-emerald-600 font-medium transition">FAQ</a>
+                </nav>
+
+                <!-- Right Side Actions -->
+                <div class="hidden md:flex items-center space-x-4">
+                    <!-- Language Switcher -->
+                    <button onclick="toggleLanguage()" class="flex items-center gap-2 px-3 py-2 text-slate-600 hover:bg-slate-100 rounded-lg transition" title="Switch Language">
+                        <span class="lang-en text-xl">🇬🇧</span>
+                        <span class="lang-pl text-xl">🇵🇱</span>
+                        <span class="text-sm font-semibold">
+                            <span class="lang-en">EN</span>
+                            <span class="lang-pl">PL</span>
+                        </span>
+                    </button>
+
+                    <div class="h-6 w-px bg-slate-200"></div>
+
+                    <a href="#contact" class="text-slate-600 hover:text-slate-900 font-medium">
+                        <span class="lang-en">Log In</span><span class="lang-pl">Zaloguj</span>
+                    </a>
+                    <a href="#contact" class="bg-slate-900 hover:bg-slate-800 text-white px-6 py-2.5 rounded-full font-semibold transition shadow-lg shadow-emerald-500/20">
+                        <span class="lang-en">Get Started</span><span class="lang-pl">Dołącz teraz</span>
+                    </a>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center gap-4">
+                    <button onclick="toggleLanguage()" class="text-xl">
+                        <span class="lang-en">🇬🇧</span><span class="lang-pl">🇵🇱</span>
+                    </button>
+                    <button onclick="document.getElementById('mobile-menu').classList.toggle('hidden')" class="text-slate-600 hover:text-slate-900 focus:outline-none">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-slate-100 p-4 shadow-lg">
+            <a href="#features" class="block py-2 text-slate-600 font-medium">
+                <span class="lang-en">Features</span><span class="lang-pl">Funkcje</span>
+            </a>
+            <a href="#geo" class="block py-2 text-slate-600 font-medium">
+                <span class="lang-en">Coverage</span><span class="lang-pl">Zasięg</span>
+            </a>
+            <a href="#integration" class="block py-2 text-slate-600 font-medium">API</a>
+            <a href="#contact" class="block mt-4 text-center bg-slate-900 text-white py-2 rounded-lg font-semibold">
+                <span class="lang-en">Get Started</span><span class="lang-pl">Dołącz teraz</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- 1. Hero Section -->
+    <section class="hero-pattern pt-32 pb-20 lg:pt-48 lg:pb-32 relative overflow-hidden text-white">
+        <div class="absolute top-0 right-0 -mt-20 -mr-20 w-96 h-96 bg-emerald-500/20 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-0 left-0 -mb-20 -ml-20 w-80 h-80 bg-blue-500/20 rounded-full blur-3xl"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center max-w-3xl mx-auto">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-800/50 border border-slate-700 mb-6 animate-fade-in">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                    <span class="text-sm font-medium text-emerald-400">
+                        <span class="lang-en">24/7 Payment Acceptance</span>
+                        <span class="lang-pl">Akceptacja Płatności 24/7</span>
+                    </span>
+                </div>
+                <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight mb-6 leading-tight">
+                    <span class="lang-en">Global Acquiring <br/><span class="gradient-text">No Questions Asked</span></span>
+                    <span class="lang-pl">Globalny Acquiring <br/><span class="gradient-text">Bez Zbędnych Pytań</span></span>
+                </h1>
+                <p class="text-lg md:text-xl text-slate-400 mb-10 leading-relaxed">
+                    <span class="lang-en">Realtalk Payments is a unified platform for accepting payments, mass payouts, and finance management. We work with High-Risk, iGaming, Dating, and classic E-com.</span>
+                    <span class="lang-pl">Realtalk Payments to jednolita platforma do akceptacji płatności, masowych wypłat i zarządzania finansami. Obsługujemy High-Risk, iGaming, Dating oraz klasyczny E-commerce.</span>
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center gap-4">
+                    <a href="#contact" class="bg-emerald-500 hover:bg-emerald-600 text-white px-8 py-4 rounded-xl font-bold text-lg transition shadow-lg shadow-emerald-500/30 flex items-center justify-center gap-2">
+                        <span class="lang-en">Start Now <i class="fa-solid fa-arrow-right"></i></span>
+                        <span class="lang-pl">Rozpocznij <i class="fa-solid fa-arrow-right"></i></span>
+                    </a>
+                    <a href="#features" class="bg-slate-800 hover:bg-slate-700 text-white px-8 py-4 rounded-xl font-bold text-lg transition flex items-center justify-center gap-2 border border-slate-700">
+                        <i class="fa-solid fa-play"></i> 
+                        <span class="lang-en">Live Demo</span>
+                        <span class="lang-pl">Demo Systemu</span>
+                    </a>
+                </div>
+                <div class="mt-12 flex justify-center gap-8 text-slate-500 opacity-70 grayscale">
+                    <i class="fa-brands fa-cc-visa text-4xl"></i>
+                    <i class="fa-brands fa-cc-mastercard text-4xl"></i>
+                    <i class="fa-brands fa-bitcoin text-4xl"></i>
+                    <i class="fa-brands fa-apple-pay text-4xl"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. Segments (Who needs this) -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-slate-900 mb-4">
+                    <span class="lang-en">Solutions for Your Business</span>
+                    <span class="lang-pl">Rozwiązania dla Twojego Biznesu</span>
+                </h2>
+                <p class="text-slate-600">
+                    <span class="lang-en">We understand the specifics of every industry</span>
+                    <span class="lang-pl">Rozumiemy specyfikę każdej branży</span>
+                </p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Segment 1 -->
+                <div class="p-8 border border-slate-100 rounded-2xl bg-slate-50 card-hover transition duration-300">
+                    <div class="w-14 h-14 bg-blue-100 rounded-xl flex items-center justify-center mb-6 text-blue-600">
+                        <i class="fa-solid fa-shop text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">E-commerce & Retail</h3>
+                    <div class="lang-en">
+                        <p class="text-slate-600 mb-4">Classic online stores and marketplaces.</p>
+                        <ul class="space-y-2 text-sm text-slate-500">
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> High approval rates</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> Ready-made CMS plugins</li>
+                        </ul>
+                    </div>
+                    <div class="lang-pl">
+                        <p class="text-slate-600 mb-4">Klasyczne sklepy internetowe i marketplace.</p>
+                        <ul class="space-y-2 text-sm text-slate-500">
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> Wysoka akceptowalność</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> Gotowe wtyczki CMS</li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Segment 2 -->
+                <div class="p-8 border border-emerald-100 rounded-2xl bg-emerald-50/30 card-hover transition duration-300 relative overflow-hidden">
+                    <div class="absolute top-0 right-0 bg-emerald-500 text-white text-xs font-bold px-3 py-1 rounded-bl-lg">POPULAR</div>
+                    <div class="w-14 h-14 bg-emerald-100 rounded-xl flex items-center justify-center mb-6 text-emerald-600">
+                        <i class="fa-solid fa-dice text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">High-Risk (iGaming/Betting)</h3>
+                    <div class="lang-en">
+                        <p class="text-slate-600 mb-4">Industries with high turnover and risk levels.</p>
+                        <ul class="space-y-2 text-sm text-slate-500">
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> Chargeback protection</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> Transaction cascading</li>
+                        </ul>
+                    </div>
+                    <div class="lang-pl">
+                        <p class="text-slate-600 mb-4">Branże o wysokim ryzyku i obrotach.</p>
+                        <ul class="space-y-2 text-sm text-slate-500">
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> Ochrona przed chargebackami</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> Kaskadowanie transakcji</li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Segment 3 -->
+                <div class="p-8 border border-slate-100 rounded-2xl bg-slate-50 card-hover transition duration-300">
+                    <div class="w-14 h-14 bg-purple-100 rounded-xl flex items-center justify-center mb-6 text-purple-600">
+                        <i class="fa-solid fa-laptop-code text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">SaaS & Digital Services</h3>
+                    <div class="lang-en">
+                        <p class="text-slate-600 mb-4">Subscriptions, info-business, and digital goods.</p>
+                        <ul class="space-y-2 text-sm text-slate-500">
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> Recurring payments</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> Global billing</li>
+                        </ul>
+                    </div>
+                    <div class="lang-pl">
+                        <p class="text-slate-600 mb-4">Subskrypcje, infobiznes i dobra cyfrowe.</p>
+                        <ul class="space-y-2 text-sm text-slate-500">
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> Płatności cykliczne</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> Globalny billing</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. Features -->
+    <section id="features" class="py-20 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-6">
+                        <span class="lang-en">Everything You Need to Manage Money</span>
+                        <span class="lang-pl">Wszystko do Zarządzania Pieniędzmi</span>
+                    </h2>
+                    <p class="text-lg text-slate-600 mb-8">
+                        <span class="lang-en">Replace a dozen services with one Realtalk solution.</span>
+                        <span class="lang-pl">Zastąp tuzin usług jednym rozwiązaniem Realtalk.</span>
+                    </p>
+                    
+                    <div class="space-y-6">
+                        <div class="flex gap-4">
+                            <div class="flex-shrink-0 w-12 h-12 bg-white rounded-lg shadow-sm flex items-center justify-center text-emerald-500">
+                                <i class="fa-solid fa-money-bill-transfer text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-bold text-slate-900">
+                                    <span class="lang-en">Multi-Currency Processing</span>
+                                    <span class="lang-pl">Procesing Wielowalutowy</span>
+                                </h4>
+                                <p class="text-slate-600">
+                                    <span class="lang-en">Accept payments in 150+ currencies, on-the-fly conversion, settlements in USDT/EUR/USD.</span>
+                                    <span class="lang-pl">Przyjmuj płatności w 150+ walutach, natychmiastowa konwersja, rozliczenia w USDT/EUR/USD.</span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <div class="flex-shrink-0 w-12 h-12 bg-white rounded-lg shadow-sm flex items-center justify-center text-blue-500">
+                                <i class="fa-solid fa-users-viewfinder text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-bold text-slate-900">
+                                    <span class="lang-en">Smart Routing</span>
+                                    <span class="lang-pl">Inteligentny Routing</span>
+                                </h4>
+                                <p class="text-slate-600">
+                                    <span class="lang-en">Smart Routing increases payment success rates by 15-20% by switching gateways.</span>
+                                    <span class="lang-pl">Smart Routing zwiększa skuteczność płatności o 15-20% dzięki przełączaniu bramek.</span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <div class="flex-shrink-0 w-12 h-12 bg-white rounded-lg shadow-sm flex items-center justify-center text-purple-500">
+                                <i class="fa-solid fa-chart-pie text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-bold text-slate-900">
+                                    <span class="lang-en">Deep Analytics</span>
+                                    <span class="lang-pl">Zaawansowana Analityka</span>
+                                </h4>
+                                <p class="text-slate-600">
+                                    <span class="lang-en">Detailed reports on conversion, decline reasons, and geography in real-time.</span>
+                                    <span class="lang-pl">Szczegółowe raporty konwersji, powodów odrzuceń i geografii w czasie rzeczywistym.</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- UI Mockup -->
+                <div class="relative">
+                    <div class="absolute inset-0 bg-gradient-to-r from-emerald-500 to-blue-500 transform rotate-1 rounded-2xl opacity-20 blur-lg"></div>
+                    <div class="relative bg-white border border-slate-200 rounded-2xl shadow-2xl overflow-hidden p-6">
+                        <div class="flex items-center justify-between mb-6 border-b border-slate-100 pb-4">
+                            <div class="font-bold text-slate-800">
+                                <span class="lang-en">Balance Overview</span>
+                                <span class="lang-pl">Przegląd Salda</span>
+                            </div>
+                            <div class="text-sm text-emerald-600 bg-emerald-50 px-3 py-1 rounded-full">
+                                <span class="lang-en">+12.5% vs last week</span>
+                                <span class="lang-pl">+12.5% vs zeszły tydzień</span>
+                            </div>
+                        </div>
+                        <div class="flex gap-4 mb-6">
+                            <div class="flex-1 bg-slate-50 p-4 rounded-xl">
+                                <div class="text-sm text-slate-500 mb-1">
+                                    <span class="lang-en">Available</span>
+                                    <span class="lang-pl">Dostępne</span>
+                                </div>
+                                <div class="text-2xl font-bold text-slate-900">$124,500.00</div>
+                            </div>
+                            <div class="flex-1 bg-slate-50 p-4 rounded-xl">
+                                <div class="text-sm text-slate-500 mb-1">
+                                    <span class="lang-en">On Hold</span>
+                                    <span class="lang-pl">Zablokowane</span>
+                                </div>
+                                <div class="text-2xl font-bold text-slate-900">$4,230.50</div>
+                            </div>
+                        </div>
+                        <div class="space-y-3">
+                            <div class="flex items-center justify-between p-3 hover:bg-slate-50 rounded-lg transition">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center text-green-600"><i class="fa-solid fa-arrow-down"></i></div>
+                                    <div>
+                                        <div class="font-medium text-sm">
+                                            <span class="lang-en">Payment #8832</span>
+                                            <span class="lang-pl">Wpłata #8832</span>
+                                        </div>
+                                        <div class="text-xs text-slate-400">Visa •••• 4242</div>
+                                    </div>
+                                </div>
+                                <div class="font-bold text-green-600">+$450.00</div>
+                            </div>
+                            <div class="flex items-center justify-between p-3 hover:bg-slate-50 rounded-lg transition">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-8 h-8 rounded-full bg-red-100 flex items-center justify-center text-red-600"><i class="fa-solid fa-arrow-up"></i></div>
+                                    <div>
+                                        <div class="font-medium text-sm">
+                                            <span class="lang-en">Partner Payout</span>
+                                            <span class="lang-pl">Wypłata dla Partnera</span>
+                                        </div>
+                                        <div class="text-xs text-slate-400">USDT TRC-20</div>
+                                    </div>
+                                </div>
+                                <div class="font-bold text-slate-900">-$1,200.00</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Geography & Methods -->
+    <section id="geo" class="py-20 bg-slate-900 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold mb-4">
+                    <span class="lang-en">Accept Payments Worldwide</span>
+                    <span class="lang-pl">Przyjmuj Płatności na Całym Świecie</span>
+                </h2>
+                <p class="text-slate-400">
+                    <span class="lang-en">Local payment methods increase conversion by up to 40%</span>
+                    <span class="lang-pl">Lokalne metody płatności zwiększają konwersję nawet o 40%</span>
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+                <div class="p-6 bg-slate-800 rounded-xl hover:bg-slate-700 transition cursor-default">
+                    <i class="fa-solid fa-earth-europe text-4xl text-emerald-400 mb-4"></i>
+                    <h3 class="font-bold text-lg">Europe (SEPA)</h3>
+                    <p class="text-sm text-slate-400 mt-2">Cards, Sofort, Giropay, BLIK</p>
+                </div>
+                <div class="p-6 bg-slate-800 rounded-xl hover:bg-slate-700 transition cursor-default">
+                    <i class="fa-solid fa-earth-americas text-4xl text-blue-400 mb-4"></i>
+                    <h3 class="font-bold text-lg">LATAM</h3>
+                    <p class="text-sm text-slate-400 mt-2">PIX (Brazil), OXXO, Boleto</p>
+                </div>
+                <div class="p-6 bg-slate-800 rounded-xl hover:bg-slate-700 transition cursor-default">
+                    <i class="fa-solid fa-earth-asia text-4xl text-red-400 mb-4"></i>
+                    <h3 class="font-bold text-lg">Asia</h3>
+                    <p class="text-sm text-slate-400 mt-2">AliPay, WeChat, UPI (India)</p>
+                </div>
+                <div class="p-6 bg-slate-800 rounded-xl hover:bg-slate-700 transition cursor-default">
+                    <i class="fa-brands fa-bitcoin text-4xl text-yellow-500 mb-4"></i>
+                    <h3 class="font-bold text-lg">Crypto</h3>
+                    <p class="text-sm text-slate-400 mt-2">USDT, BTC, ETH (Auto-convert)</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Security -->
+    <section class="py-16 bg-white border-b border-slate-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-8">
+                <div class="md:w-1/2">
+                    <h2 class="text-3xl font-bold text-slate-900 mb-4">
+                        <span class="lang-en">Bank-Grade Security</span>
+                        <span class="lang-pl">Bezpieczeństwo Poziomu Bankowego</span>
+                    </h2>
+                    <ul class="space-y-4">
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-shield-halved text-emerald-500 mt-1"></i>
+                            <div>
+                                <strong class="block text-slate-900">PCI DSS Level 1</strong>
+                                <span class="text-sm text-slate-500">
+                                    <span class="lang-en">Certified storage of card data.</span>
+                                    <span class="lang-pl">Certyfikowane przechowywanie danych kartowych.</span>
+                                </span>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-user-shield text-emerald-500 mt-1"></i>
+                            <div>
+                                <strong class="block text-slate-900">Anti-Fraud System</strong>
+                                <span class="text-sm text-slate-500">
+                                    <span class="lang-en">AI monitoring of suspicious transactions in real-time.</span>
+                                    <span class="lang-pl">Monitoring AI podejrzanych transakcji w czasie rzeczywistym.</span>
+                                </span>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-file-contract text-emerald-500 mt-1"></i>
+                            <div>
+                                <strong class="block text-slate-900">KYC/AML Compliance</strong>
+                                <span class="text-sm text-slate-500">
+                                    <span class="lang-en">Automated user verification without delays.</span>
+                                    <span class="lang-pl">Automatyczna weryfikacja użytkowników bez opóźnień.</span>
+                                </span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="md:w-1/3 flex justify-center gap-6 opacity-60 grayscale hover:grayscale-0 transition duration-500">
+                    <div class="text-center">
+                        <i class="fa-brands fa-cc-visa text-6xl text-blue-900"></i>
+                        <p class="text-xs mt-2 font-bold">Verified</p>
+                    </div>
+                    <div class="text-center">
+                        <i class="fa-solid fa-lock text-6xl text-slate-800"></i>
+                        <p class="text-xs mt-2 font-bold">PCI DSS</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. Integration -->
+    <section id="integration" class="py-20 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col lg:flex-row gap-12">
+                <div class="lg:w-1/2">
+                    <span class="text-emerald-600 font-bold uppercase tracking-wider text-sm">
+                        <span class="lang-en">For Developers</span>
+                        <span class="lang-pl">Dla Programistów</span>
+                    </span>
+                    <h2 class="text-3xl font-bold text-slate-900 mt-2 mb-6">
+                        <span class="lang-en">Integration in 30 Minutes</span>
+                        <span class="lang-pl">Integracja w 30 Minut</span>
+                    </h2>
+                    <p class="text-slate-600 mb-8">
+                        <span class="lang-en">Our RESTful API is meticulously documented. Use ready-made SDKs for PHP, Python, Node.js, or plugins for popular CMS.</span>
+                        <span class="lang-pl">Nasze API RESTful jest szczegółowo udokumentowane. Użyj gotowych SDK dla PHP, Python, Node.js lub wtyczek do popularnych CMS.</span>
+                    </p>
+                    <div class="flex flex-wrap gap-3 mb-8">
+                        <span class="px-4 py-2 bg-white border border-slate-200 rounded-lg text-sm font-mono text-slate-600 shadow-sm">WordPress</span>
+                        <span class="px-4 py-2 bg-white border border-slate-200 rounded-lg text-sm font-mono text-slate-600 shadow-sm">Shopify</span>
+                        <span class="px-4 py-2 bg-white border border-slate-200 rounded-lg text-sm font-mono text-slate-600 shadow-sm">WooCommerce</span>
+                        <span class="px-4 py-2 bg-white border border-slate-200 rounded-lg text-sm font-mono text-slate-600 shadow-sm">Magento</span>
+                    </div>
+                    <a href="#" class="text-emerald-600 font-bold hover:underline">
+                        <span class="lang-en">Read API Docs <i class="fa-solid fa-arrow-right ml-1"></i></span>
+                        <span class="lang-pl">Dokumentacja API <i class="fa-solid fa-arrow-right ml-1"></i></span>
+                    </a>
+                </div>
+                <div class="lg:w-1/2 bg-slate-900 rounded-xl p-6 shadow-2xl overflow-hidden font-mono text-sm">
+                    <div class="flex items-center gap-2 mb-4 border-b border-slate-700 pb-2">
+                        <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                        <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                        <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                        <span class="text-slate-400 text-xs ml-2">POST /v1/payments</span>
+                    </div>
+                    <div class="text-green-400">
+                        <span class="text-purple-400">curl</span> -X POST https://api.realtalk.dev/v1/charge \<br>
+                        &nbsp;&nbsp;-u <span class="text-yellow-300">"<YOUR_API_KEY>"</span> \<br>
+                        &nbsp;&nbsp;-d <span class="text-blue-300">amount</span>=2000 \<br>
+                        &nbsp;&nbsp;-d <span class="text-blue-300">currency</span>=usd \<br>
+                        &nbsp;&nbsp;-d <span class="text-blue-300">source</span>=tok_visa \<br>
+                        &nbsp;&nbsp;-d <span class="text-blue-300">description</span>="Charge for order #1234"
+                    </div>
+                    <div class="mt-4 text-slate-400 border-t border-slate-700 pt-4">
+                        <span class="text-blue-400">{</span><br>
+                        &nbsp;&nbsp;"id": "ch_1I5W...",<br>
+                        &nbsp;&nbsp;"object": "charge",<br>
+                        &nbsp;&nbsp;"amount": 2000,<br>
+                        &nbsp;&nbsp;"status": <span class="text-green-400">"succeeded"</span><br>
+                        <span class="text-blue-400">}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. Advantages (Stats) -->
+    <section class="py-16 bg-emerald-600 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center divide-x divide-emerald-500/50">
+                <div>
+                    <div class="text-4xl font-bold mb-2">99.9%</div>
+                    <div class="text-emerald-100 text-sm">System Uptime</div>
+                </div>
+                <div>
+                    <div class="text-4xl font-bold mb-2">&lt; 15m</div>
+                    <div class="text-emerald-100 text-sm">
+                        <span class="lang-en">Support Reply</span>
+                        <span class="lang-pl">Odp. Supportu</span>
+                    </div>
+                </div>
+                <div>
+                    <div class="text-4xl font-bold mb-2">T+0</div>
+                    <div class="text-emerald-100 text-sm">
+                        <span class="lang-en">Payout Speed</span>
+                        <span class="lang-pl">Szybkość Wypłat</span>
+                    </div>
+                </div>
+                <div>
+                    <div class="text-4xl font-bold mb-2">3.5%</div>
+                    <div class="text-emerald-100 text-sm">
+                        <span class="lang-en">Starting Rate</span>
+                        <span class="lang-pl">Prowizja od</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 8. Clients & Testimonials -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-slate-900">
+                    <span class="lang-en">Trusted by Market Leaders</span>
+                    <span class="lang-pl">Zaufali nam Liderzy Rynku</span>
+                </h2>
+            </div>
+            <!-- Logos -->
+            <div class="flex flex-wrap justify-center gap-12 opacity-60 mb-16 grayscale">
+                <!-- Mockup Logos -->
+                <div class="flex items-center gap-2 text-xl font-bold"><i class="fa-brands fa-aws text-3xl"></i> CloudServ</div>
+                <div class="flex items-center gap-2 text-xl font-bold"><i class="fa-brands fa-spotify text-3xl"></i> MusicStream</div>
+                <div class="flex items-center gap-2 text-xl font-bold"><i class="fa-solid fa-cube text-3xl"></i> BlockChainInc</div>
+                <div class="flex items-center gap-2 text-xl font-bold"><i class="fa-solid fa-gamepad text-3xl"></i> BetWinner</div>
+            </div>
+            
+            <!-- One Review -->
+            <div class="max-w-3xl mx-auto bg-slate-50 p-8 rounded-2xl relative">
+                <i class="fa-solid fa-quote-left text-4xl text-slate-200 absolute top-6 left-6"></i>
+                <div class="lang-en">
+                    <p class="text-lg text-slate-700 italic relative z-10 mb-6 text-center">
+                        "After integrating Realtalk Payments, our Approval Ratio grew by 18%. We are especially happy with instant partner payouts in USDT — it solved a huge issue with cross-border transfers."
+                    </p>
+                </div>
+                <div class="lang-pl">
+                    <p class="text-lg text-slate-700 italic relative z-10 mb-6 text-center">
+                        "Po integracji z Realtalk Payments nasz wskaźnik akceptacji wzrósł o 18%. Szczególnie cieszą natychmiastowe wypłaty dla partnerów w USDT — to rozwiązało ogromny problem z przelewami transgranicznymi."
+                    </p>
+                </div>
+                <div class="flex items-center justify-center gap-4">
+                    <div class="w-12 h-12 bg-slate-300 rounded-full overflow-hidden">
+                         <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Alex" alt="Avatar">
+                    </div>
+                    <div class="text-left">
+                        <div class="font-bold text-slate-900">Alex Volkov</div>
+                        <div class="text-sm text-slate-500">CTO, GamingAlliance LTD</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 9. FAQ -->
+    <section id="faq" class="py-20 bg-slate-50">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center text-slate-900 mb-12">FAQ</h2>
+            
+            <div class="space-y-4">
+                <details class="group bg-white rounded-xl shadow-sm border border-slate-200 p-6 [&_summary::-webkit-details-marker]:hidden">
+                    <summary class="flex items-center justify-between cursor-pointer">
+                        <h3 class="font-medium text-slate-900">
+                            <span class="lang-en">How fast is the integration process?</span>
+                            <span class="lang-pl">Jak szybki jest proces integracji?</span>
+                        </h3>
+                        <span class="ml-1.5 flex-shrink-0 rounded-full bg-white p-1.5 text-slate-900 sm:p-3">
+                            <i class="fa-solid fa-plus group-open:hidden"></i>
+                            <i class="fa-solid fa-minus hidden group-open:block"></i>
+                        </span>
+                    </summary>
+                    <p class="mt-4 leading-relaxed text-slate-600">
+                        <span class="lang-en">Pre-approval takes 24 hours after submitting documents. Full technical integration usually takes 1 to 3 days.</span>
+                        <span class="lang-pl">Pre-approval trwa 24 godziny od przesłania dokumentów. Pełna integracja techniczna zajmuje zazwyczaj od 1 do 3 dni.</span>
+                    </p>
+                </details>
+
+                <details class="group bg-white rounded-xl shadow-sm border border-slate-200 p-6 [&_summary::-webkit-details-marker]:hidden">
+                    <summary class="flex items-center justify-between cursor-pointer">
+                        <h3 class="font-medium text-slate-900">
+                            <span class="lang-en">Do you work with High-Risk projects?</span>
+                            <span class="lang-pl">Czy obsługujecie projekty High-Risk?</span>
+                        </h3>
+                        <span class="ml-1.5 flex-shrink-0 rounded-full bg-white p-1.5 text-slate-900 sm:p-3">
+                            <i class="fa-solid fa-plus group-open:hidden"></i>
+                            <i class="fa-solid fa-minus hidden group-open:block"></i>
+                        </span>
+                    </summary>
+                    <p class="mt-4 leading-relaxed text-slate-600">
+                        <span class="lang-en">Yes, this is one of our specializations. We provide solutions for gambling, betting, forex, and dating with individual rates.</span>
+                        <span class="lang-pl">Tak, to jedna z naszych specjalizacji. Dostarczamy rozwiązania dla hazardu, zakładów bukmacherskich, forex i randek z indywidualnymi stawkami.</span>
+                    </p>
+                </details>
+
+                <details class="group bg-white rounded-xl shadow-sm border border-slate-200 p-6 [&_summary::-webkit-details-marker]:hidden">
+                    <summary class="flex items-center justify-between cursor-pointer">
+                        <h3 class="font-medium text-slate-900">
+                            <span class="lang-en">Is there a Rolling Reserve?</span>
+                            <span class="lang-pl">Czy stosujecie Rolling Reserve?</span>
+                        </h3>
+                        <span class="ml-1.5 flex-shrink-0 rounded-full bg-white p-1.5 text-slate-900 sm:p-3">
+                            <i class="fa-solid fa-plus group-open:hidden"></i>
+                            <i class="fa-solid fa-minus hidden group-open:block"></i>
+                        </span>
+                    </summary>
+                    <p class="mt-4 leading-relaxed text-slate-600">
+                        <span class="lang-en">For High-Risk projects, the standard rolling reserve is 5-10% for 180 days, but terms are discussed individually based on processing history.</span>
+                        <span class="lang-pl">Dla projektów High-Risk standardowy rolling reserve wynosi 5-10% na 180 dni, ale warunki są omawiane indywidualnie w zależności od historii procesowania.</span>
+                    </p>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- 10. Final CTA & Footer -->
+    <footer id="contact" class="bg-slate-900 text-white pt-20 pb-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- CTA Box -->
+            <div class="bg-gradient-to-r from-emerald-600 to-blue-600 rounded-3xl p-8 md:p-16 text-center mb-20 relative overflow-hidden">
+                <div class="relative z-10">
+                    <h2 class="text-3xl md:text-5xl font-bold mb-6">
+                        <span class="lang-en">Ready to Scale Your Business?</span>
+                        <span class="lang-pl">Gotowy na Skalowanie Biznesu?</span>
+                    </h2>
+                    <p class="text-xl text-emerald-100 mb-8 max-w-2xl mx-auto">
+                        <span class="lang-en">Leave a request, and we will prepare a personalized commercial proposal within an hour.</span>
+                        <span class="lang-pl">Zostaw zgłoszenie, a przygotujemy indywidualną ofertę handlową w ciągu godziny.</span>
+                    </p>
+                    
+                    <form class="max-w-md mx-auto flex flex-col gap-4" onsubmit="event.preventDefault(); alert('Thanks! / Dzięki!');">
+                        <input type="email" placeholder="E-mail" class="w-full px-6 py-4 rounded-xl text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-300" required>
+                        <button type="submit" class="w-full bg-slate-900 text-white font-bold px-6 py-4 rounded-xl hover:bg-slate-800 transition">
+                            <span class="lang-en">Connect for Free</span>
+                            <span class="lang-pl">Podłącz za Darmo</span>
+                        </button>
+                    </form>
+                    <p class="text-sm text-emerald-100 mt-4 opacity-70">
+                        <span class="lang-en">By clicking the button, you agree to the data processing policy.</span>
+                        <span class="lang-pl">Klikając przycisk, zgadzasz się na politykę przetwarzania danych.</span>
+                    </p>
+                </div>
+            </div>
+
+            <!-- Footer Links -->
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 border-t border-slate-800 pt-12">
+                <div class="col-span-1 md:col-span-1">
+                    <div class="flex items-center gap-2 mb-4">
+                        <div class="w-8 h-8 bg-slate-800 rounded flex items-center justify-center text-emerald-400">
+                            <i class="fa-solid fa-bolt"></i>
+                        </div>
+                        <span class="font-bold text-xl">Realtalk.dev</span>
+                    </div>
+                    <p class="text-slate-400 text-sm mb-4">
+                        <span class="lang-en">Tech-first payment provider for modern digital business.</span>
+                        <span class="lang-pl">Technologiczny dostawca płatności dla nowoczesnego biznesu cyfrowego.</span>
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="#" class="text-slate-400 hover:text-white"><i class="fa-brands fa-telegram text-xl"></i></a>
+                        <a href="#" class="text-slate-400 hover:text-white"><i class="fa-brands fa-linkedin text-xl"></i></a>
+                        <a href="#" class="text-slate-400 hover:text-white"><i class="fa-brands fa-twitter text-xl"></i></a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold mb-4">
+                        <span class="lang-en">Product</span>
+                        <span class="lang-pl">Produkt</span>
+                    </h4>
+                    <ul class="space-y-2 text-sm text-slate-400">
+                        <li><a href="#" class="hover:text-emerald-400"><span class="lang-en">Payments</span><span class="lang-pl">Płatności</span></a></li>
+                        <li><a href="#" class="hover:text-emerald-400"><span class="lang-en">Payouts</span><span class="lang-pl">Wypłaty</span></a></li>
+                        <li><a href="#" class="hover:text-emerald-400"><span class="lang-en">Pricing</span><span class="lang-pl">Cennik</span></a></li>
+                        <li><a href="#" class="hover:text-emerald-400">API Docs</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-bold mb-4">
+                        <span class="lang-en">Company</span>
+                        <span class="lang-pl">Firma</span>
+                    </h4>
+                    <ul class="space-y-2 text-sm text-slate-400">
+                        <li><a href="#" class="hover:text-emerald-400"><span class="lang-en">About Us</span><span class="lang-pl">O nas</span></a></li>
+                        <li><a href="#" class="hover:text-emerald-400"><span class="lang-en">Contacts</span><span class="lang-pl">Kontakt</span></a></li>
+                        <li><a href="#" class="hover:text-emerald-400"><span class="lang-en">Partners</span><span class="lang-pl">Partnerzy</span></a></li>
+                        <li><a href="#" class="hover:text-emerald-400"><span class="lang-en">Careers</span><span class="lang-pl">Kariera</span></a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-bold mb-4">
+                        <span class="lang-en">Contacts</span>
+                        <span class="lang-pl">Kontakt</span>
+                    </h4>
+                    <ul class="space-y-2 text-sm text-slate-400">
+                        <li><i class="fa-solid fa-envelope mr-2"></i> hello@realtalk.dev</li>
+                        <li><i class="fa-brands fa-telegram mr-2"></i> @realtalk_support</li>
+                        <li class="mt-4 text-xs text-slate-500">
+                            Realtalk Payments Ltd.<br>
+                            Reg. number: HE 123456<br>
+                            Nicosia, Cyprus
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-slate-800 mt-12 pt-8 text-center text-slate-500 text-sm">
+                &copy; 2024-2025 Realtalk Payments. <span class="lang-en">All rights reserved.</span><span class="lang-pl">Wszelkie prawa zastrzeżone.</span> <a href="#" class="underline hover:text-white">Privacy Policy</a>.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        function toggleLanguage() {
+            const body = document.body;
+            if (body.classList.contains('lang-en')) {
+                body.classList.remove('lang-en');
+                body.classList.add('lang-pl');
+            } else {
+                body.classList.remove('lang-pl');
+                body.classList.add('lang-en');
+            }
+        }
+    </script>
+</body>
+</html>
